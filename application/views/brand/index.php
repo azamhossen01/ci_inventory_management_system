@@ -78,7 +78,8 @@
     function update_brand(){
         var brand_id = $('#brand_id').val();
         var brand_name = $('#brand_name').val();
-        var data = {brand_id:brand_id,brand_name:brand_name};
+        var category_id = $('#category_id').val();
+        var data = {brand_id:brand_id,brand_name:brand_name,category_id:category_id};
         if(brand_name){
             $.ajax({
                 type : 'post',
@@ -104,6 +105,7 @@
             url : li + 'brand_ctrl/all_brands',
             dataType : 'json',
             success : function(data){
+                 console.log(data);
                 var count_brand = data.length;
                 var html = ``;
                 for(var i = 0; i < count_brand; i++){
@@ -131,6 +133,7 @@
                 success : function(data){
                    if(data){
                     $('#brand_name').val(data.brand_name);
+                    $('#category_id').val(data.category_id);
                     $('#brand_create_modal').modal('show');
                     $('#save_brand_button').css('display','none');
                     $('#update_brand_button').css('display','block');
