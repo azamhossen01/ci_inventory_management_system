@@ -6,25 +6,33 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="<?= base_url('category_ctrl/category') ?>">Category <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('user_ctrl/user') ?>">User</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="<?= base_url('category_ctrl/category') ?>">Category</a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Brand</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Product</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Order</a>
+      </li>
+      
+    </ul>
+    <ul class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          <?= $this->Common_model->anyName('users',['id'=>$this->session->userdata('id')],'name'); ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="<?= base_url('logout_ctrl/profile') ?>">Profile</a>
           <a class="dropdown-item" href="<?= base_url('logout_ctrl/logout'); ?>">Logout</a>
         </div>
       </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      </ul>
   </div>
 </nav>

@@ -10,6 +10,35 @@ class Logout_ctrl extends CI_Controller{
         }
         
     }
+    public function profile(){
+        $user = $this->Common_model->get_single_row_data('users',['id'=>$this->session->userdata('id')]);
+        $this->load->view('profile/edit_profile',compact('user'));
+    }
+
+    public function update_profile(){
+        if($this->input->post('new_password')){
+            $data['password'] = md5($this->input->post('new_password'));
+        }
+        $data['name'] = $this->input->post('name');
+        $data['email'] = $this->input->post('email');
+        $result = $this->Common_model->update_data('users',['id'=>$this->session->userdata('id')],$data);
+        echo $result;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function logout(){
         $user_data = $this->session->all_userdata();

@@ -13,4 +13,19 @@ class Common_model extends CI_Model{
         $query = $this->db->get($table)->result();
         return $query;
     }
+
+    public function get_single_row_data($table,$where){
+        $query = $this->db->where($where)->get($table)->row();
+        return $query;
+    }
+
+    public function anyName($table,$where,$field){
+        $query = $this->db->select($field)->where($where)->get($table)->row();
+        return $query->$field;
+    }
+
+    public function update_data($table,$where,$data){
+        $query = $this->db->where($where)->update($table,$data);
+        return $query;
+    }
 }
