@@ -28,4 +28,6 @@ class Common_model extends CI_Model{
         $query = $this->db->where($where)->update($table,$data);
         return $query;
     }
+
+    
 }

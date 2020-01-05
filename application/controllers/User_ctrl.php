@@ -42,4 +42,17 @@ class User_ctrl extends CI_Controller{
         $result = $this->Common_model->update_data('users',['id'=>$id],$data);
         echo json_encode($result);
     }
+
+    public function update_user(){
+        $id = $this->input->post('user_id');
+        if($this->input->post('password') !== null){
+            $data['password'] = md5($this->input->post('password'));
+        }
+        
+        $data['role'] = $this->input->post('role');
+        $data['name'] = $this->input->post('name');
+        $data['email'] = $this->input->post('email');
+        $result = $this->Common_model->update_data('users',['id'=>$id],$data);
+        echo json_encode($result);
+    }
 }

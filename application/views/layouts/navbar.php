@@ -13,7 +13,7 @@
         <a class="nav-link" href="<?= base_url('category_ctrl/category') ?>">Category</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Brand</a>
+        <a class="nav-link" href="<?= base_url('brand_ctrl/brand') ?>">Brand</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Product</a>

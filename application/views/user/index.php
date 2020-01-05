@@ -62,11 +62,12 @@
                 <label for="password">Password</label>
                 <input required type="password" name="password" id="password" class="form-control">
             </div>
+            <input type="hidden" name="user_id" id="user_id">
       
       </div>
       <div class="modal-footer">
         <button type="button" style="display:none" onclick="save_user()" id="save_user_button" class="btn btn-primary">Save</button>
-        <button type="button" style="display:none" onclick="save_user()" id="update_user_button" class="btn btn-primary">Update</button>
+        <button type="button" style="display:none" onclick="update_user()" id="update_user_button" class="btn btn-primary">Update</button>
         <button type="reset" class="btn btn-danger">Clear</button>
         </form>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -86,6 +87,34 @@ var li = "http://localhost/ci_inventory_management_system/";
 $(document).ready(function(){
     all_users();
 });
+
+function update_user(){
+    var user_id = $('#user_id').val();
+    var role = $('#role').val();
+    var name = $('#name').val();
+    var email = $('#email').val();
+    var password = $('#password').val();
+    if(password !== null){
+        var data = {user_id,role,name,email,password};
+    }else{
+        var data = {user_id,role,name,email};
+    }
+    $.ajax({
+        type : 'post',
+        data : data,
+        url : li + "user_ctrl/update_user",
+        dataType : 'json',
+        success : function(data){
+            if(data){
+                alert('User updated successfully');
+                all_users();
+                $('#add_user_form')[0].reset();
+                $('#add_user_modal').modal('hide');
+                $('#user_id').val("");
+            }
+        }
+    });
+}
 
 function add_user_modal_open(){
     $('#add_user_form')[0].reset();
@@ -134,6 +163,7 @@ function change_status(id,status){
 }
 
 function update_user_modal_open(id){
+    $('#user_id').val(id);
     $('#save_user_button').css('display','none');
     $('#update_user_button').css('display','block');
     if(id){
