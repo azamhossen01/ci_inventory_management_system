@@ -23,7 +23,7 @@
       </li>
       
     </ul>
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto" style="margin-left:500px">
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <?= $this->Common_model->anyName('users',['id'=>$this->session->userdata('id')],'name'); ?>
