@@ -19,7 +19,7 @@
         <a class="nav-link" href="<?= base_url('product_ctrl/product'); ?>">Product</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Order</a>
+        <a class="nav-link" href="<?= base_url('order_ctrl/order'); ?>">Order</a>
       </li>
       
     </ul>

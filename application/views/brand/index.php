@@ -156,7 +156,6 @@
     function save_brand(){
         var category_id = $('#category_id').val();
         var brand_name = $('#brand_name').val();
-        alert(brand_name);
         var data = {brand_name:brand_name,category_id:category_id};
         if(brand_name && category_id){
            $.ajax({

@@ -14,6 +14,11 @@ class Common_model extends CI_Model{
         return $query;
     }
 
+    public function get_conditional_rows($table,$where){
+        $query = $this->db->where($where)->get($table)->result();
+        return $query;
+    }
+
     public function get_single_row_data($table,$where){
         $query = $this->db->where($where)->get($table)->row();
         return $query;
@@ -28,6 +33,8 @@ class Common_model extends CI_Model{
         $query = $this->db->where($where)->update($table,$data);
         return $query;
     }
+
+
 
     
 }
