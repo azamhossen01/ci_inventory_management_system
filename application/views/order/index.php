@@ -115,12 +115,21 @@
 
 <?php $this->load->view('layouts/footer.php'); ?>
 <script>
+
+function deduct_new_row (element) { 
+    var new_div_id = $(element).parent("div").parent("div").attr("id");
+    // $('#'+new_div_id).css('display','none');
+    $('#'+new_div_id).remove();
+}
+
+</script>
+<script>
     var li = "http://localhost/ci_inventory_management_system/";
 
     $(document).ready(function(){
         // all_brands();
     });
-    var pro_id = 0;
+    var a = 0;
     function add_new_product(){
         $.ajax({
             type : 'post',
@@ -130,7 +139,7 @@
 
                if(data){
                    var html = `
-                   <div class="row" id="pro${++pro_id}">
+                   <div class="row mb-4" id="${++a}">
                 <div class="col-lg-8">
                     <select name="product_id[]" class="form-control">`;
                     var product_count = data.length;
@@ -143,21 +152,22 @@
                 <div class="col-lg-3">
                     <input type="number" name="quantity[]" class="form-control">
                 </div>
-                <div class="col-lg-1">
-                    <button onclick="deduct_new_product()" type="button" class="badge badge-danger"><b>-</b></button>
+                <div class="col-lg-1 myClass">
+                    <button  type="button" onclick="deduct_new_row(this)" class=" badge badge-danger"><b>-</b></button>
                 </div>
-            </div><br>
+            </div>
                    `;
                 $('#product_details').append(html);
                }
             }
         });
     }
+    $(".myClass").each(function(i,item) {
+        //Reset Attribute id with new value
+        $(item).attr("id", $(item).attr("id")+(i+1));
+ });
+   
     
-    function deduct_new_product(){
-        alert(pro_id--);
-        $('#pro'+(pro_id--)).css('display','none');
-    }
 
     function update_brand(){
         var brand_id = $('#brand_id').val();
